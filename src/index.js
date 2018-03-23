@@ -13,9 +13,10 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { timeline } from './reducers/timeline'
 import { notificacao } from './reducers/header'
+import { addImportant } from './reducers/important'
 import { Provider } from 'react-redux';
 
-const reducers = combineReducers({ timeline, notificacao });
+const reducers = combineReducers({ timeline, notificacao, addImportant });
 const store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 function verificaAutenticacao(nextState, replace) {

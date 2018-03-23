@@ -12,3 +12,7 @@ export function like(fotoId, liker) {
 export function notifica(msg) {
     return { type: 'ALERT', msg };
 }
+
+export function add(num) {
+    return { type: 'ADD', num };
+}

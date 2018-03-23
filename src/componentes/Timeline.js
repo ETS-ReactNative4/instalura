@@ -26,6 +26,10 @@ export class Timeline extends Component {
         }
     }
 
+    add() {
+        this.props.addd(this.props.num);
+    }
+
     render() {
         return (
             <div className="fotos container">
@@ -44,7 +48,8 @@ export class Timeline extends Component {
 
 const mapStateToProps = state => {
     return {
-        fotos: state.timeline
+        fotos: state.timeline.list,
+        num: state.timeline.num,
     }
 }
 
@@ -58,6 +63,9 @@ const mapdispatchToProps = dispatch => {
         },
         lista: (urlPerfil) => {
             dispatch(TimelineApi.lista(urlPerfil));
+        },
+        addd: (num) => {
+            dispatch(TimelineApi.add(num));
         }
     }
 }

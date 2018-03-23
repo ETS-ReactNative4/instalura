@@ -1,6 +1,15 @@
-import { listagem, comentario, like, notifica } from "../actions/actionCreator"
+import { listagem, comentario, like, notifica, add } from "../actions/actionCreator"
 
 export default class TimelineApi {
+
+    static add(num) {
+        return dispatch => {
+            console.log(num)
+            num += 1;
+            dispatch(add(num));
+            return num;
+        }
+    }
 
     static pesquisa(login) {
         return dispatch => {

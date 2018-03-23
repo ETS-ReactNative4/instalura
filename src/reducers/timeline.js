@@ -8,11 +8,19 @@ function trocaFoto(lista, fotoId, callbackAtualizaPropriedades) {
     const indicdeDaLista = lista.findIndex(foto => foto.id === fotoId);
     return lista.set(indicdeDaLista, fotoEstadoNovo);
 }
+const INITIAL_STATE = {
+    list: new List(),
+    num: 1
+};
 
-export function timeline(state = new List(), action) {
+export function timeline(state = INITIAL_STATE, action) {
 
     if (action.type === 'LISTAGEM') {
-        return new List(action.fotos);
+        return { list: new List(action.fotos), num: 22 };
+    }
+
+    if (action.type === 'ADD') {
+        return { list: new List(), num: action.num };
     }
 
     if (action.type === 'COMENTARIO') {

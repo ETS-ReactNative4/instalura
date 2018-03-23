@@ -40,7 +40,7 @@ export class Header extends Component {
 
 const mapStateToProps = state => {
   return {
-    msg: state.header
+    msg: state.notificacao
   }
 }
 
