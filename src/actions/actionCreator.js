@@ -16,3 +16,8 @@ export function notifica(msg) {
 export function add(num) {
     return { type: 'ADD', num };
 }
+
+export function double(num) {
+    console.log('actionCreator');
+    return { type: 'DOUBLE', dados: num };
+}

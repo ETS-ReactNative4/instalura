@@ -20,7 +20,6 @@ export class Important extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
     return {
         num: state.addImportant
     }

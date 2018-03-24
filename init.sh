@@ -2,3 +2,4 @@ docker run -p 3000:3000 -p 8080:8080 -p 3306:3306 -it --rm -v /Users/thiago/Desk
 service mysql start
 cd /usr/src/react/instalura
 java -jar -Dspring.datasource.password=root instalura.jar &
+npm start

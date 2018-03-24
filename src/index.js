@@ -6,6 +6,7 @@ import './css/login.css';
 import App from './App';
 import Login from './componentes/Login';
 import Logout from './componentes/Logout';
+import Configuracao from './componentes/Configuracao';
 import { Router, Route, browserHistory } from 'react-router'
 import { matchPattern } from 'react-router/lib/PatternUtils'
 
@@ -14,9 +15,10 @@ import thunkMiddleware from 'redux-thunk';
 import { timeline } from './reducers/timeline'
 import { notificacao } from './reducers/header'
 import { addImportant } from './reducers/important'
+import { configuracao_state } from './reducers/configuracao'
 import { Provider } from 'react-redux';
 
-const reducers = combineReducers({ timeline, notificacao, addImportant });
+const reducers = combineReducers({ timeline, notificacao, addImportant, configuracao_state });
 const store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 function verificaAutenticacao(nextState, replace) {
@@ -33,6 +35,7 @@ ReactDOM.render(
       <Router history={browserHistory}>
         <Route path="/" component={Login} />
         <Route path="/timeline(/:login)" component={App} onEnter={verificaAutenticacao} />
+        <Route path="/Configuracao" component={Configuracao} />
         <Route path="/logout" component={Logout} />
       </Router>
     </Provider>
