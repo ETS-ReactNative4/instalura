@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
+import RelogioApi from '../logicas/RelogioApi'
+import { connect } from 'react-redux'
 
-export default class Relogio extends Component {
+export class Relogio extends Component {
 
     constructor() {
         super();
-        this.state = {
-            dataAtual: new Date()
-        }
         setInterval(() => {
-            this.setState({
-                dataAtual: new Date()
-            })
+           this.props.atuailizaMapeado();
         }, 1000)
     }
 
@@ -22,7 +19,7 @@ export default class Relogio extends Component {
 
     //da internet nao levar em consideracao
     formataData() {
-        let date = this.state.dataAtual;
+        let date = this.props.dataAtual;
         var hours = date.getHours();
         var minutes = date.getMinutes();
         var seconds = date.getSeconds();
@@ -30,7 +27,24 @@ export default class Relogio extends Component {
         hours %= 12;
         hours = hours ? hours : 12; // the hour '0' should be '12'
         minutes = minutes < 10 ? '0' + minutes : minutes;
-        var strTime = hours + ':' + minutes+ ':' + seconds + ' ' + ampm;
+        var strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
         return date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear() + "  " + strTime;
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        dataAtual: state.relogioReducer.dataAtual
+    }
+}
+
+const mapdispatchToProps = dispatch => {
+    return {
+        atuailizaMapeado: () => {
+            dispatch(RelogioApi.atualizaRelogio());
+        }
+    }
+}
+
+const RelogioConatiner = connect(mapStateToProps, mapdispatchToProps)(Relogio);
+export default RelogioConatiner;

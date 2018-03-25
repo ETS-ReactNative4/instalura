@@ -21,3 +21,7 @@ export function double(num) {
     console.log('actionCreator');
     return { type: 'DOUBLE', dados: num };
 }
+
+export function aumentaUmSegundo() {
+    return { type: 'INCREMENTA' };
+}

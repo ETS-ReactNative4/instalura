@@ -7,10 +7,6 @@ export class ConfiguracaoPadrao extends Component {
 
     save(event) {
         event.preventDefault();
-        this.setState({
-            size: this.inputSize.value,
-            time: this.inputTime.value
-        });
         this.props.saveMapeado({
             size: this.inputSize.value,
             time: this.inputTime.value
@@ -70,6 +66,10 @@ ConfiguracaoPadrao.contextTypes = {
     store: React.PropTypes.object.isRequired
 }
 
+//para nao manipular o state diretamente
+//o unico que pode mexer no state é o reducer(this.state, this.setState)
+console.log("Connect", connect)
+//conecta o reducer com o 
 const ConfiguracaoConatiner = connect(mapStateToProps, mapdispatchToProps)(ConfiguracaoPadrao);
 
 export default ConfiguracaoConatiner;
