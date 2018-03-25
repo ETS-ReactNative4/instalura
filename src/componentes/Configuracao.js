@@ -26,6 +26,7 @@ export class ConfiguracaoPadrao extends Component {
     render() {
         return (
             <div id="root">
+                {String(this.props.dataDoRelogio)}
                 <Relogio></Relogio>
                 <br />
                 SIZE = {this.props.size}
@@ -46,10 +47,10 @@ export class ConfiguracaoPadrao extends Component {
 
 
 const mapStateToProps = state => {
-    console.log(state);
     return {
         time: state.configuracao_state.time,
-        size: state.configuracao_state.size
+        size: state.configuracao_state.size,
+        dataDoRelogio: state.relogioReducer.dataAtual
     }
 }
 
@@ -68,7 +69,6 @@ ConfiguracaoPadrao.contextTypes = {
 
 //para nao manipular o state diretamente
 //o unico que pode mexer no state é o reducer(this.state, this.setState)
-console.log("Connect", connect)
 //conecta o reducer com o 
 const ConfiguracaoConatiner = connect(mapStateToProps, mapdispatchToProps)(ConfiguracaoPadrao);
 
