@@ -1,0 +1,26 @@
+version: '3'
+services:
+    java:
+        build:
+            dockerfile: ./docker/java.Dockerfile
+            context: .    
+        image: java
+        container_name: java
+        ports:
+            - '80:80'
+        networks:
+            - production-network
+        depends_on:
+            - mysql
+    mysql:
+        build:
+            dockerfile: ./docker/mysql.Dockerfile
+            context: .      
+      image: mysql:latest
+      container_name: mysql
+      networks:
+        - production-network
+networks:
+    production-network:
+        driver: bridge
+        
