@@ -1,5 +1,9 @@
-import { List } from 'immutable'
+import { List } from 'immutable';
 
+const INITIAL_STATE = {
+    list: new List(),
+    num: 1
+};
 
 function trocaFoto(lista, fotoId, callbackAtualizaPropriedades) {
     const fotoEstadoAntigo = lista.find(foto => foto.id === fotoId);
@@ -8,10 +12,7 @@ function trocaFoto(lista, fotoId, callbackAtualizaPropriedades) {
     const indicdeDaLista = lista.findIndex(foto => foto.id === fotoId);
     return lista.set(indicdeDaLista, fotoEstadoNovo);
 }
-const INITIAL_STATE = {
-    list: new List(),
-    num: 1
-};
+
 
 export function timeline(state = INITIAL_STATE, action) {
 
